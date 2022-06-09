@@ -4,14 +4,89 @@
         <style>
             body{
                 margin: 0;
-                padding: 0;;
+                padding: 0;
+                background-color: #272727;
+                font-family: 'Open Sans', sans-serif;
+
             }
+            
+            #title div{
+                display: inline-block;
+                font-family: 'Open Sans', sans-serif;
+            }
+
+            #title span, #title div{
+                padding: 0;
+                animation: waviy 1s infinite;
+                animation-delay: calc(.1s * var(--i));
+            }
+
+            @keyframes waviy {
+                0%, 40%, 100% {
+                    transform: translateY(0);
+                }
+                20% {
+                    transform: translateY(-20px);
+                }
+            }
+
+            #title{
+                color: #fff;
+                font-size: 5rem;
+                position: absolute;
+                display: block;
+                left: 50%;
+                top: 50%;
+                transform: translateX(-50%) translateY(-50%);
+                animation-name: waviy;
+
+            }
+            #button:hover{
+                background: #ee0000;
+            }
+
+            #button{
+                width: 75%;
+                height: 50px;
+                padding: 0;
+                margin: 0;
+                border-radius: 15px;
+                left: 12.5%;
+                position: absolute;
+                margin-top: 20px;
+                color: white;
+                background: #962424;
+                border: 0;
+                text-transform: uppercase;
+                font-family: 'Open Sans', sans-serif;
+                transition: background-color 0.5s ease;
+
+            }
+            #player{
+                visibility: hidden;
+            }
+
+            
         </style>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@900&display=swap" rel="stylesheet">
     </head>
     <body>
-        <div style="position: fixed; z-index: -99; width: 100%; height: 100%">
-            <iframe width="100%" height="100%" allow="autoplay" src="https://www.youtube.com/embed/rm0u6N2sydc?autoplay=1&controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            
+        
+        <div id="title"> 
+            <div style="--i:1">C</div><div style="--i:2">o</div><div style="--i:3">m</div><div style="--i:4">i</div><div style="--i:5">n</div><div style="--i:6">g</div><div style="--i:7">&nbsp;</div><div style="--i:8">s</div><div style="--i:9">o</div><div style="--i:10">o</div><div style="--i:11">n</div><div style="--i:12">.</div><div style="--i:13">.</div><div style="--i:14">.</div>
+            <br/> <button id="button" onclick="play()" >Click me</button>
         </div>
+        <audio controls autoplay loop id="player">
+            <source src="song.mp3" type="audio/ogg">
+        </audio>
+        
+        <script>
+            function play() {
+                document.getElementById("player").play()
+            }
+            
+        </script>
     </body>
 </html>
